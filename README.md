@@ -7,3 +7,5 @@
 ## 開発環境
 - データベース / postgresql
 - rbenv
+
+gem deviceを使わずログイン機能の実装
