@@ -1,4 +1,4 @@
-# Book / 現場で使えるRuby on RAils5 速習実践ガイドー勉強
+# Book / 現場で使えるRuby on RAils5 速習実践ガイド
 
 ## バックエンド
 - Ruby 2.7.0
