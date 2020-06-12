@@ -5,4 +5,6 @@ class User < ApplicationRecord
 	validates :name, presence: true
 	validates :email, presence: true, uniqueness: true
 	# uniquenessデータが一意になっているか
+
+	has_many :tasks
 end
