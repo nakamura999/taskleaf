@@ -8,6 +8,9 @@ class Task < ApplicationRecord
 
 	belongs_to :user
 
+	scope :recent, -> { order(created_at: :desc) }
+	# 新しい順　カスタムメソッド メソッド名recent scopeメソッドで、recentメソッド作成
+
 	private
 
 	def validate_name_not_comma

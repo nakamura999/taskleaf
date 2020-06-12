@@ -1,6 +1,9 @@
 class TasksController < ApplicationController
   def index
-  	@tasks = current_user.tasks
+  	@tasks = current_user.tasks.recent
+    # @tasks = current_user.tasks.order(created_at: :desc)
+    # recent モデルに記入
+    # 作成日時新しい順
     # = Task.where(user_id: current_user.id)
   end
 
