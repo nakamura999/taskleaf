@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  skip_before_action :login_required
+  # 親クラスに定義してある　login_required　を通らないようにする
+
   def new
   end
 
