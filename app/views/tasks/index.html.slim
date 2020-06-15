@@ -2,9 +2,15 @@ h1 タスク一覧
 
 = search_form_for @q, class: 'mb-5' do |f|
   .form-group.row
-    = f.label :name_cont, '名称', class: 'col-xs-2 col-form-label'
+    = f.label :name_cont, '名称', class: 'col-sm-2 col-form-label'
     .col-sm-10
       = f.search_field :name_cont, class: 'form-control'
+      / _cont 〇〇を含む検索
+  .form-group.row
+    = f.label :created_at_gteq, '登録日時', class: 'col-sm-2 col-form-label'
+    .col-sm-10
+      = f.search_field :created_at_gteq, class: "form-control"
+      / _gteq 同じかそれより大きいかを検索
   .form-group
     = f.submit class: 'btn btn-primary'
 

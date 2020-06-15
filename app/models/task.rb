@@ -22,5 +22,15 @@ class Task < ApplicationRecord
 		self.name = '名前無し' if name.blank?
 		# blank(nilや空白)である時、'名前無し’文字列を代入
 	end
+    
+    # 検索条件に許可しているカラム
+	def self.ransackable_attributes(auth_object = nil)
+		%w[name created_at]
+	end
+
+    # 検索条件に含める関連を指定　ここでは空の配列を返すようにオーバーライド
+	def self.ransackable_associations(auth_object = nil)
+		[]
+	end
 
 end
