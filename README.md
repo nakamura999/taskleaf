@@ -8,4 +8,6 @@
 - データベース / postgresql
 - rbenv
 
-gem deviceを使わずログイン機能の実装
+### 機能
+- 「gem device」を使わずログイン機能の実装
+- タスク作成時に確認画面を挟む
