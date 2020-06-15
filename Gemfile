@@ -71,3 +71,5 @@ gem 'bootstrap'
 gem 'rails_autolink'
 # 自動url化gem
 
+gem 'ransack'
+# 検索機能
