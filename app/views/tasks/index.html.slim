@@ -20,7 +20,8 @@ h1 タスク一覧
 table.table.table-hover
   thead.thead-default
     tr
-      th= Task.human_attribute_name(:name)
+      th= sort_link(@q, :name)
+      / th= Task.human_attribute_name(:name)
       / th 登録　　<th>登録<th>
       th= Task.human_attribute_name(:created_at)
       / <th>Task.human_attribute_name(:created_at)</th>
