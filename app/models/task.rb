@@ -12,14 +12,19 @@ class Task < ApplicationRecord
 	scope :recent, -> { order(created_at: :desc) }
 	# 新しい順　カスタムメソッド メソッド名recent scopeメソッドで、recentメソッド作成
 
+    # config/applicationにcsvを利用する為の記述追加
+    # csv_attributesに属性と順番を定義
+    # indexアクションに機能追加
     def self.csv_attributes
     	["name", "description", "created_at", "updated_at"]
     end
 
     def self.generate_csv
     	CSV.generate(headers: true) do |csv|
+    	# CSV.generateで文字列を生成。　headerを出力、csv_attributesの属性名をそのまま出力
     		csv << csv_attributes
     		all.each do |task|
+    		# allメソッド全タスクを取得1レコードごとにCSVの一行を出力
     			csv << csv_attributes.map{ |attr| task.send(attr) }
     		end
     	end

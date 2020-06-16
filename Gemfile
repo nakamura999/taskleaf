@@ -73,3 +73,5 @@ gem 'rails_autolink'
 
 gem 'ransack'
 # 検索機能
+
+gem 'kaminari'

@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   def index
     @q = current_user.tasks.ransack(params[:q])
-  	@tasks = @q.result(distinct: true)
+  	@tasks = @q.result(distinct: true).page(params[:page]).per(10)
     # @tasks = current_user.tasks.recent
     # @tasks = current_user.tasks.order(created_at: :desc)
     # recentメソッド モデルに記入
@@ -11,7 +11,10 @@ class TasksController < ApplicationController
     # = Task.where(user_id: current_user.id)
     respond_to do |format|
       format.html
+      # Htmlとしてアクセスした場合。（特に指定無しーindex.html.slimによって画面が表示）
       format.csv { send_data @tasks.generate_csv, filename: "tasks-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
+      # send_dataメソッドを使って、レスポンスを送り出し、送り出したデータをブラウザからファイルをダウンロードできるようにする
+      # ファイル名は、異なるファイル名になるように現在時刻を使って、作成
     end
   end
 
