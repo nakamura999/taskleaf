@@ -19,6 +19,10 @@ table.table.table-hover
       td= auto_link(simple_format(h(@task.description), {}, sanitize: false, wrapper_tag: "div"))
       / auto_link urlを記述した場合にurlがリンク化される
     tr
+      th= Task.human_attribute_name(:image)
+      td= image_tag @task.image if @task.image.attached?
+      / if @task.image.attached? 実際に画像が送付されているときだけ表示
+    tr
       th= Task.human_attribute_name(:created_at)
       td= @task.created_at
     tr
