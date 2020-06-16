@@ -9,6 +9,10 @@ class TasksController < ApplicationController
     # recentメソッド モデルに記入
     # 作成日時新しい順
     # = Task.where(user_id: current_user.id)
+    respond_to do |format|
+      format.html
+      format.csv { send_data @tasks.generate_csv, filename: "tasks-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
+    end
   end
 
   def show

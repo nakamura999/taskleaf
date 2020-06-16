@@ -12,6 +12,19 @@ class Task < ApplicationRecord
 	scope :recent, -> { order(created_at: :desc) }
 	# 新しい順　カスタムメソッド メソッド名recent scopeメソッドで、recentメソッド作成
 
+    def self.csv_attributes
+    	["name", "description", "created_at", "updated_at"]
+    end
+
+    def self.generate_csv
+    	CSV.generate(headers: true) do |csv|
+    		csv << csv_attributes
+    		all.each do |task|
+    			csv << csv_attributes.map{ |attr| task.send(attr) }
+    		end
+    	end
+    end
+
 	private
 
 	def validate_name_not_comma
